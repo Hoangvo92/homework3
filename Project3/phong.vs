@@ -14,4 +14,11 @@ void main()
 {
     // TODO: Your code here
     // Remember to set gl_Position (correctly) or you will get a black screen...
+	FragPos = vec3(model*vec4(position, 1.0f));    //
+
+	//model is cut down into mat3-> inverse into a transpose matrix
+	Normal = inverse(transpose(mat3(model))) *normal;
+   
+    gl_Position = projection * view * model* vec4(FragPos, 1.0);
+	
 } 
