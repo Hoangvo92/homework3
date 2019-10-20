@@ -22,3 +22,5 @@ ports, you can run sudo port install glew +universal and sudo port install libsd
 have Homebrew installed, you can run brew install glfw3 . With Macports, you can run sudo port install
 glfw . GLM: If you have Homebrew installed, you can run brew install glm . With Macports, you can run
 sudo port install glm .
+
+There are .JPG files in Homework3/ directory to show result of running the program.
