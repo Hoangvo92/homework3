@@ -183,8 +183,14 @@ int main()
 		// Create camera transformations
 		glm::mat4 view;
 		view = camera.GetViewMatrix();
-		glm::mat4 projection;
-		// TODO: set up the project matrix
+		glm::mat4 projection ;
+		// TODO: set up the projection matrix
+		projection = glm :: perspective(glm:: radians(camera.Zoom), (float)WIDTH/(float)HEIGHT, 0.1f, 100.0f);
+		//glm::mat4 translate = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 2.0f, .0f));
+		//use the rotate matrix to change the direction of the cube in draw the container, showing the 3d side of the cube
+		glm::mat4 rotate = glm::rotate(glm::mat4(1.0f), glm::radians(-30.0f), glm:: vec3(0.0f, 1.0f, 0.0f));
+		//The rotate matrix is used on the model matrix in line 208
+		
 
 
 		// Get the uniform locations
@@ -194,10 +200,12 @@ int main()
 		// Pass the matrices to the shader
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
+		
 		// Draw the container (using container's vertex attributes)
 		glBindVertexArray(containerVAO);
 		glm::mat4 model = glm::mat4(1.0);
+		//rotate the model to show the 3D side as said in line 192
+		model = model * rotate;
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		glBindVertexArray(0);
