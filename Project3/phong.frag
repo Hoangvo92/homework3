@@ -11,11 +11,13 @@ uniform vec3 lightColor;
 uniform vec3 objectColor;
 
 void main()
-{
+{// input: FragPos from Phong.vs and ViewPos from Camera
+    //output: 4-vector color
+	//function: decide the color and lighting in the picture
     // TODO: Replace with your code...
     // If gl_Position was set correctly, this gives a totally red cube
     //ambient
-	float ambientStrength = 0.1;
+	float ambientStrength = 0.001f;
 	vec3 ambient = ambientStrength * lightColor;
 
 	//diffuse
